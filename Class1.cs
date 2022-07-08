@@ -5,14 +5,14 @@ using System.Runtime.InteropServices;
 
 namespace TabIn
 {
-    [BepInDependency("com.willis.rounds.unbound", BepInDependency.DependencyFlags.HardDependency)]
+    [BepInDependency("com.willis.rounds.unbound", BepInDependency.DependencyFlags.SoftDependency)]
     [BepInPlugin(ModId, ModName, Version)]
     [BepInProcess("Rounds.exe")]
     public class Class1 : BaseUnityPlugin
     {
         private const string ModId = "faith.mom-gay.TabIn";
         private const string ModName = "TabIn";
-        public const string Version = "0.0.0";
+        public const string Version = "0.0.3";
         private bool flashing = false;
         private IntPtr hwnd;
 
@@ -38,7 +38,10 @@ namespace TabIn
 
         private void Start()
         {
-            Unbound.RegisterClientSideMod(ModId);
+            if (BepInEx.Bootstrap.Chainloader.PluginInfos.ContainsKey("com.willis.rounds.unbound"))
+            {
+                Unbound.RegisterClientSideMod(ModId);
+            }
             hwnd = GetWindowHandle();
         }
 
