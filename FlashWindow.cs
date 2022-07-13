@@ -1,10 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Runtime.InteropServices;
-using System.Text;
 
 namespace TabIn
 {
+    // http://eddiejackson.net/wp/?p=21197
     public static class FlashWindow
     {
         [DllImport("user32.dll")]
@@ -71,7 +70,7 @@ namespace TabIn
         /// <summary>
         /// Flash the spacified Window (Form) until it recieves focus.
         /// </summary>
-        /// <param name="form">The Form (Window) to Flash.</param>
+        /// <param name="hwnd">The hwnd (Window) to Flash.</param>
         /// <returns></returns>
         public static bool Flash(IntPtr hwnd)
         {
@@ -98,7 +97,7 @@ namespace TabIn
         /// <summary>
         /// Flash the specified Window (form) for the specified number of times
         /// </summary>
-        /// <param name="form">The Form (Window) to Flash.</param>
+        /// <param name="hwnd">The hwnd (Window) to Flash.</param>
         /// <param name="count">The number of times to Flash.</param>
         /// <returns></returns>
         public static bool Flash(IntPtr hwnd, uint count)
@@ -114,7 +113,7 @@ namespace TabIn
         /// <summary>
         /// Start Flashing the specified Window (form)
         /// </summary>
-        /// <param name="form">The Form (Window) to Flash.</param>
+        /// <param name="hwnd">The hwnd (Window) to Flash.</param>
         /// <returns></returns>
         public static bool Start(IntPtr hwnd)
         {
@@ -129,7 +128,7 @@ namespace TabIn
         /// <summary>
         /// Stop Flashing the specified Window (form)
         /// </summary>
-        /// <param name="form"></param>
+        /// <param name="hwnd"></param>
         /// <returns></returns>
         public static bool Stop(IntPtr hwnd)
         {
