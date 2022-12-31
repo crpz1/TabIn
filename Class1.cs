@@ -12,7 +12,7 @@ namespace TabIn
     {
         private const string ModId = "faith.mom-gay.TabIn";
         private const string ModName = "TabIn";
-        public const string Version = "0.0.3";
+        public const string Version = "0.0.4";
         private bool flashing = false;
         private IntPtr hwnd;
 
