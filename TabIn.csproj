@@ -2,6 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
+    <AnalysisLevel>latest</AnalysisLevel>
+    <EnableNETAnalyzers>true</EnableNETAnalyzers>
   </PropertyGroup>
 
   <ItemGroup>
@@ -24,5 +26,12 @@
       <HintPath>D:\SteamLibrary\steamapps\common\ROUNDS\Rounds_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
     </Reference>
   </ItemGroup>
+
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+      <Exec Command="del /q $(OutDir)\TabIn.zip" />
+	  <Exec Command="tar -acf $(OutDir)TabIn.zip icon.png manifest.json LICENSE README.md -C $(OutDir) $(TargetFileName) " />
+  </Target>
+
+  <ProjectExtensions><VisualStudio><UserProperties manifest_1json__JsonSchema="" /></VisualStudio></ProjectExtensions>
 
 </Project>
