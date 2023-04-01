@@ -16,6 +16,9 @@
     <Reference Include="BepInEx">
       <HintPath>D:\SteamLibrary\steamapps\common\ROUNDS\BepInEx\core\BepInEx.dll</HintPath>
     </Reference>
+    <Reference Include="PhotonUnityNetworking">
+      <HintPath>D:\SteamLibrary\steamapps\common\ROUNDS\Rounds_Data\Managed\PhotonUnityNetworking.dll</HintPath>
+    </Reference>
     <Reference Include="UnboundLib">
       <HintPath>D:\SteamLibrary\steamapps\common\ROUNDS\BepInEx\plugins\UnboundLib.dll</HintPath>
     </Reference>

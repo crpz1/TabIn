@@ -1,6 +1,7 @@
 ﻿using BepInEx;
 using UnboundLib;
 using System;
+using System.Linq;
 using System.Runtime.InteropServices;
 
 namespace TabIn
@@ -54,12 +55,13 @@ namespace TabIn
             }
             if (GameManager.instance.battleOngoing && GameManager.lockInput == false)
             {
-                if (!flashing)
+                Player currentPlayer = PlayerManager.instance.players.First(player => player.data.view.IsMine);
+                if (!currentPlayer.data.dead && !flashing)
                 {
                     flashing = true;
                     FlashWindow.Flash(hwnd);
                 }
-            } else if (GameManager.lockInput == false && GameManager.instance.isPlaying)
+            } else if (GameManager.lockInput == false && CardChoice.instance.IsPicking)
             {
                 if (!flashing)
                 {
