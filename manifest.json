@@ -1,6 +1,6 @@
 ﻿{
   "name": "TabIn",
-  "version_number": "0.0.4",
+  "version_number": "0.1.0",
   "website_url": "https://github.com/crpz1/TabIn",
   "description": "A mod that flashes the taskbar icon if you need to do something in game.",
   "dependencies": [
