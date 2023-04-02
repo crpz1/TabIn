@@ -13,7 +13,7 @@ namespace TabIn
     {
         private const string ModId = "faith.mom-gay.TabIn";
         private const string ModName = "TabIn";
-        public const string Version = "0.0.4";
+        public const string Version = "0.1.0";
         private bool flashing = false;
         private IntPtr hwnd;
 
@@ -53,22 +53,27 @@ namespace TabIn
                 flashing = false;
                 return;
             }
-            if (GameManager.instance.battleOngoing && GameManager.lockInput == false)
+
+            if (GameManager.instance.battleOngoing || CardChoice.instance.IsPicking)
             {
                 Player currentPlayer = PlayerManager.instance.players.First(player => player.data.view.IsMine);
-                if (!currentPlayer.data.dead && !flashing)
+                if (GameManager.instance.battleOngoing && GameManager.lockInput == false)
                 {
-                    flashing = true;
-                    FlashWindow.Flash(hwnd);
-                }
-            } else if (GameManager.lockInput == false && CardChoice.instance.IsPicking)
-            {
-                if (!flashing)
+                    if (!currentPlayer.data.dead && !flashing)
+                    {
+                        flashing = true;
+                        FlashWindow.Flash(hwnd);
+                    }
+                } else if (GameManager.lockInput == false && CardChoice.instance.pickrID == currentPlayer.playerID)
                 {
-                    flashing = true;
-                    FlashWindow.Flash(hwnd);
+                    if (!flashing)
+                    {
+                        flashing = true;
+                        FlashWindow.Flash(hwnd);
+                    }
                 }
-            } else 
+            }
+            else 
             {
                 flashing = false;
             }
