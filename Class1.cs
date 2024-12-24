@@ -1,5 +1,4 @@
 ﻿using BepInEx;
-using UnboundLib;
 using System;
 using System.Linq;
 using System.Runtime.InteropServices;
@@ -11,7 +10,7 @@ namespace TabIn
     [BepInProcess("Rounds.exe")]
     public class Class1 : BaseUnityPlugin
     {
-        private const string ModId = "faith.mom-gay.TabIn";
+        public const string ModId = "faith.mom-gay.TabIn";
         private const string ModName = "TabIn";
         public const string Version = "0.1.0";
         private bool flashing = false;
@@ -39,9 +38,9 @@ namespace TabIn
 
         private void Start()
         {
-            if (BepInEx.Bootstrap.Chainloader.PluginInfos.ContainsKey("com.willis.rounds.unbound"))
+            if (UnboundLibCompat.enabled)
             {
-                Unbound.RegisterClientSideMod(ModId);
+                UnboundLibCompat.RegisterClientSideMod();
             }
             hwnd = GetWindowHandle();
         }
