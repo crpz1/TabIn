@@ -63,7 +63,7 @@ namespace TabIn
                         flashing = true;
                         FlashWindow.Flash(hwnd);
                     }
-                } else if (GameManager.lockInput == false && CardChoice.instance.pickrID == currentPlayer.playerID)
+                } else if (GameManager.lockInput == false && CardChoice.instance.pickrID == currentPlayer.PlayerID)
                 {
                     if (!flashing)
                     {
